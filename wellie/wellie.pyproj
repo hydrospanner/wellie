@@ -42,6 +42,8 @@
     <Content Include="users\templates\users\login.html" />
     <Content Include="users\templates\users\signup.html" />
     <Content Include="users\templates\users\user.html" />
+    <Content Include="wells\templates\wells\base.html" />
+    <Content Include="wells\templates\wells\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
@@ -62,6 +64,7 @@
     <Compile Include="wells\migrations\__init__.py" />
     <Compile Include="wells\models.py" />
     <Compile Include="wells\tests.py" />
+    <Compile Include="wells\urls.py" />
     <Compile Include="wells\views.py" />
     <Compile Include="wells\__init__.py" />
   </ItemGroup>
@@ -73,6 +76,8 @@
     <Folder Include="wellie\" />
     <Folder Include="wells\" />
     <Folder Include="wells\migrations\" />
+    <Folder Include="wells\templates\" />
+    <Folder Include="wells\templates\wells\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

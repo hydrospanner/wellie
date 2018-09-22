@@ -15,6 +15,9 @@ class WellOrientation(models.Model):
     # e.g., sidetrack, vertical, horiz
     orientation = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.orientation
+
 class Track(models.Model):
     well = models.ForeignKey(Well, on_delete=models.CASCADE)
     index = models.IntegerField()
@@ -24,6 +27,9 @@ class Track(models.Model):
     orientation = models.ForeignKey(WellOrientation, on_delete=models.CASCADE)
     kick_off_point = models.FloatField()
     true_vertical_depth = models.FloatField()
+
+    def __str__(self):
+        return self.index
 
 class BoreHole(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
