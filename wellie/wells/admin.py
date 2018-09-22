@@ -11,7 +11,6 @@ class PerforationInline(admin.TabularInline):
 class CasingAdmin(admin.ModelAdmin):
     inlines = [
         CsgCementInline,
-        PerforationInline,
         ]
 
 class BoreHoleInline(admin.TabularInline):
@@ -25,6 +24,7 @@ class TrackAdmin(admin.ModelAdmin):
     inlines = [
         BoreHoleInline,
         TubularInline,
+        PerforationInline,
     ]
 
 class TrackInline(admin.TabularInline):
