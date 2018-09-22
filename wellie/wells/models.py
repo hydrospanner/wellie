@@ -3,7 +3,7 @@ from django.db import models
 
 class Well(models.Model):
     name = models.CharField(max_length=50)
-    api_no = models.CharField(max_length=50)
+    api_no = models.CharField(max_length=50, blank=True)
     depth_units = models.CharField(max_length=50, default='Feet')
     width_units = models.CharField(max_length=50, default='Inches')
 
@@ -21,25 +21,25 @@ class WellOrientation(models.Model):
 class Track(models.Model):
     well = models.ForeignKey(Well, on_delete=models.CASCADE)
     index = models.IntegerField()
-    parent_track = models.IntegerField()
-    parent_depth = models.FloatField()
+    parent_track = models.IntegerField(null=True)
+    parent_depth = models.FloatField(null=True)
     measured_depth = models.FloatField()
     orientation = models.ForeignKey(WellOrientation, on_delete=models.CASCADE)
-    kick_off_point = models.FloatField()
-    true_vertical_depth = models.FloatField()
+    kick_off_point = models.FloatField(null=True)
+    true_vertical_depth = models.FloatField(null=True)
 
     def __str__(self):
         return self.index
 
 class BoreHole(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
-    diameter = models.FloatField()
+    diameter = models.FloatField(null=True)
     depth = models.FloatField()
 
 class Casing(models.Model):
     name = models.CharField(max_length=200)
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
-    od_size = models.FloatField()
+    od_size = models.FloatField(null=True)
     set_depth = models.FloatField()
     top_depth = models.FloatField(default=0) # incase partially left in hole
 
@@ -51,7 +51,7 @@ class CsgCement(models.Model):
 
 class Tubular(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, blank=True)
     set_depth = models.FloatField()
 
 class Perforation(models.Model):
