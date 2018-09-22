@@ -39,16 +39,40 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="users\templates\users\login.html" />
+    <Content Include="users\templates\users\signup.html" />
+    <Content Include="users\templates\users\user.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
+    <Compile Include="users\admin.py" />
+    <Compile Include="users\apps.py" />
+    <Compile Include="users\migrations\__init__.py" />
+    <Compile Include="users\models.py" />
+    <Compile Include="users\tests.py" />
+    <Compile Include="users\urls.py" />
+    <Compile Include="users\views.py" />
+    <Compile Include="users\__init__.py" />
     <Compile Include="wellie\settings.py" />
     <Compile Include="wellie\urls.py" />
     <Compile Include="wellie\wsgi.py" />
     <Compile Include="wellie\__init__.py" />
+    <Compile Include="wells\admin.py" />
+    <Compile Include="wells\apps.py" />
+    <Compile Include="wells\migrations\__init__.py" />
+    <Compile Include="wells\models.py" />
+    <Compile Include="wells\tests.py" />
+    <Compile Include="wells\views.py" />
+    <Compile Include="wells\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="users\" />
+    <Folder Include="users\migrations\" />
+    <Folder Include="users\templates\" />
+    <Folder Include="users\templates\users\" />
     <Folder Include="wellie\" />
+    <Folder Include="wells\" />
+    <Folder Include="wells\migrations\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
