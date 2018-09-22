@@ -29,7 +29,7 @@ class Track(models.Model):
     true_vertical_depth = models.FloatField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.index)
+        return f'{self.well}, track: {self.index}'
 
 class BoreHole(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
@@ -43,8 +43,11 @@ class Casing(models.Model):
     set_depth = models.FloatField()
     top_depth = models.FloatField(default=0) # incase partially left in hole
 
+    def __str__(self):
+        return f'{self.track.well}, track: {self.track.index}, {self.name} csg'
+
 class CsgCement(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, blank=True)
     casing = models.ForeignKey(Casing, on_delete=models.CASCADE)
     top_depth = models.FloatField()
     bottom_depth = models.FloatField()
