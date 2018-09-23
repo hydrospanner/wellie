@@ -44,6 +44,7 @@
     <Content Include="users\templates\users\user.html" />
     <Content Include="wells\templates\wells\base.html" />
     <Content Include="wells\templates\wells\index.html" />
+    <Content Include="wells\templates\wells\well_detail.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="manage.py" />

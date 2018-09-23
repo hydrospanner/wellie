@@ -1,5 +1,15 @@
 ﻿{% extends "wells/base.html" %}
 
+{% block title %}
+Wellie
+{% endblock %}
+
 {% block body %}
-Hello
+<h3>Wells</h3>
+
+<ul>
+    {% for well in wells %}
+    <li><a href="/well/{{ well.pk }}/">{{ well }}</a></li>
+    {% endfor %}
+</ul>
 {% endblock %}
