@@ -18,6 +18,7 @@ class WellOrientation(models.Model):
     def __str__(self):
         return self.orientation
 
+
 class Track(models.Model):
     well = models.ForeignKey(Well, on_delete=models.CASCADE)
     index = models.IntegerField()
@@ -31,10 +32,12 @@ class Track(models.Model):
     def __str__(self):
         return f'{self.well}, track: {self.index}'
 
+
 class BoreHole(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
     diameter = models.FloatField(null=True, blank=True)
     depth = models.FloatField()
+
 
 class Casing(models.Model):
     name = models.CharField(max_length=200)
@@ -46,16 +49,19 @@ class Casing(models.Model):
     def __str__(self):
         return f'{self.track.well}, track: {self.track.index}, {self.name} csg'
 
+
 class CsgCement(models.Model):
     name = models.CharField(max_length=200, blank=True)
     casing = models.ForeignKey(Casing, on_delete=models.CASCADE)
     top_depth = models.FloatField()
     bottom_depth = models.FloatField()
 
+
 class Tubular(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
     set_depth = models.FloatField()
+
 
 class Perforation(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
