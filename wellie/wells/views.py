@@ -54,7 +54,8 @@ def get_child_fields_as_dict(well):
         casings_dict = []
         for csg in casings:
             csg_dict = to_dict(csg)
-            csg_dict['cement'] = []
+            cements = csg.csgcement_set.all()
+            csg_dict['cement'] = [to_dict(cmt) for cmt in cements]
             casings_dict.append(csg_dict)
         track_dict['casing'] = casings_dict
     return well_dict

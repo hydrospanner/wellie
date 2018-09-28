@@ -242,7 +242,7 @@
             for (var ci = 0; ci < csg.cement.length; ci++){
                 let cmt = csg.cement[ci]
                 let cmt_offset = csg_offset + line_width
-                let cmt_track = coord_length_slice(track_coords, cmt.top, cmt.bottom)
+                let cmt_track = coord_length_slice(track_coords, cmt.top_depth, cmt.bottom_depth)
                 let cmt_mirrors = mirror_tracks(cmt_track, cmt_offset)
                 id = 'track_id' + track_id + 'csg_lvl' + i + 'cmt_lvl' + ci
                 segments.push({'class': 'cement', 'line_data': cmt_mirrors.right, 'id': id + 'right'})
