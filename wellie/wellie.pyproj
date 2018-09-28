@@ -42,6 +42,8 @@
     <Content Include="users\templates\users\login.html" />
     <Content Include="users\templates\users\signup.html" />
     <Content Include="users\templates\users\user.html" />
+    <Content Include="wells\static\wells\content\diagram.css" />
+    <Content Include="wells\static\wells\scripts\diagram.js" />
     <Content Include="wells\templates\wells\base.html" />
     <Content Include="wells\templates\wells\index.html" />
     <Content Include="wells\templates\wells\well_detail.html" />
@@ -78,6 +80,10 @@
     <Folder Include="wellie\" />
     <Folder Include="wells\" />
     <Folder Include="wells\migrations\" />
+    <Folder Include="wells\static\" />
+    <Folder Include="wells\static\wells\" />
+    <Folder Include="wells\static\wells\content\" />
+    <Folder Include="wells\static\wells\scripts\" />
     <Folder Include="wells\templates\" />
     <Folder Include="wells\templates\wells\" />
   </ItemGroup>
