@@ -1,0 +1,33 @@
+.line {
+	stroke-width: 15;
+	fill: none;
+}
+
+.well_track {
+	stroke: orange;
+	stroke-width: 2;
+}
+
+
+.casing {
+  stroke: blue;
+}
+
+.tubing {
+  stroke: black;
+}
+
+.cement {
+  stroke: grey;
+}
+
+.bore_hole {
+  stroke: brown;
+  stroke-width: 4;
+  stroke-dasharray: 3, 3;
+  /* something to make the line wavey or dashed */
+}
+
+.test {
+	stroke-width: 1;
+}

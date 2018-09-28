@@ -49,8 +49,14 @@ def get_child_fields_as_dict(well):
     for track, track_dict in zip(tracks, well_dict['tracks']):
         bore_holes = track.borehole_set.all()
         track_dict['bore_holes'] = [to_dict(bh) for bh in bore_holes]
-        casings = track.casing_set.all()
-        track_dict['casing'] = [to_dict(csg) for csg in casings]
+        casings = track.casing_set.all().order_by('-set_depth')
+        # track_dict['casing'] = [to_dict(csg) for csg in casings]
+        casings_dict = []
+        for csg in casings:
+            csg_dict = to_dict(csg)
+            csg_dict['cement'] = []
+            casings_dict.append(csg_dict)
+        track_dict['casing'] = casings_dict
     return well_dict
 
 def well_detail(request, pk):

@@ -5,15 +5,19 @@ Wellie - diagram
 {% endblock %}
 
 {% block body %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'wells/content/diagram.css' %}" />
+
 <h3>{{ well }}</h3>
 
 <script type="text/javascript">
     const json_data = {{ well_data | safe }}
     const track_coords = {{ track_coords | safe }}
     const casing_arr = {{ casing_arr | safe }}
-    const bore_hole_arr = {{ bore_hole_arr | safe }}
+    const bore_hole_arr = {{ bore_hole_arr | safe }};
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="{% static 'wells/scripts/diagram.js' %}"></script>
 
 {% endblock %}
