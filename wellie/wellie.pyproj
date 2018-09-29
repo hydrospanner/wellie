@@ -64,6 +64,9 @@
     <Compile Include="wellie\__init__.py" />
     <Compile Include="wells\admin.py" />
     <Compile Include="wells\apps.py" />
+    <Compile Include="wells\diagram_data.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="wells\migrations\__init__.py" />
     <Compile Include="wells\models.py" />
     <Compile Include="wells\tests.py" />
