@@ -12,6 +12,7 @@ def index(request):
 
 
 def to_dict(instance):
+    # transform model object to dictionary. 
     opts = instance._meta
     data = {}
     for f in opts.concrete_fields + opts.many_to_many:
@@ -37,7 +38,6 @@ def calc_track_coords(track):
 def get_child_fields_as_dict(well):
     well_dict = to_dict(well)
     tracks = well.track_set.all()
-    # tracks_dict = [to_dict(track) for track in tracks]
     tracks_dict = []
     for track in tracks:
         track_dict = to_dict(track)
@@ -50,7 +50,6 @@ def get_child_fields_as_dict(well):
         bore_holes = track.borehole_set.all()
         track_dict['bore_holes'] = [to_dict(bh) for bh in bore_holes]
         casings = track.casing_set.all().order_by('-set_depth')
-        # track_dict['casing'] = [to_dict(csg) for csg in casings]
         casings_dict = []
         for csg in casings:
             csg_dict = to_dict(csg)
@@ -63,10 +62,8 @@ def get_child_fields_as_dict(well):
 def well_detail(request, pk):
     well = Well.objects.get(pk=pk)
     well_dict = get_child_fields_as_dict(well)
-    print(well_dict)
     track1 = well_dict['tracks'][0]
     context = {'well': well, 
-               'well_data': json.dumps(well_dict),
                'track_coords': json.dumps(track1['track_coords']),
                'casing_arr': json.dumps(track1['casing']),
                'bore_hole_arr': json.dumps(track1['bore_holes']),
