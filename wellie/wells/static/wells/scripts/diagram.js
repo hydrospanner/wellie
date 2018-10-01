@@ -72,7 +72,9 @@ function zoomFunction() {
     // Redraw the track
     d3.select(".well_track")
         .attr("d", lineFunction(track_coords));
-        
+
+    line_width = base_line_width / scaleMultiplier
+    line_segments = create_line_segments()
     // redraws each line individually by id
     for (var i = 0; i < line_segments.length; i++){
         let segment = line_segments[i];
@@ -144,7 +146,8 @@ function add_lines(line_data, class_name, id){
     .append('path').attr('class', class_name + " line")
     .attr('id', id)
     .attr('d', lineFunction(line_data))
-    .attr("stroke", "red")
+        .attr("stroke", "red")
+        .attr('stroke-width', line_width)
     .append("svg:title")
         .text(id);
 }
@@ -222,8 +225,10 @@ function coord_length_slice(coords, start, end){
     return sliced_coords
 }
 
+let base_line_width = 20;
+let line_width = base_line_width;
+
 function define_csg_segments(casing_arr, track_coords, track_id){
-    const line_width = 15
     const tubing_ct = 1
     // inner width is each tubing and the space around it
     const tubing_width = tubing_ct * line_width
@@ -255,7 +260,6 @@ function define_csg_segments(casing_arr, track_coords, track_id){
     
 function get_hole_segments(bore_hole_arr, casing_arr, track_coords, track_id){
     // assumes bore_hole_arr is in order from shallow to deep
-    const line_width = 15
     const tubing_ct = 1
     // inner width is each tubing and the space around it
     const tubing_width = tubing_ct * line_width
@@ -282,11 +286,15 @@ function get_hole_segments(bore_hole_arr, casing_arr, track_coords, track_id){
     }
     return segments
 }
-    
 
-function plot_segments(){
+function create_line_segments() {
     let segments = define_csg_segments(casing_arr, track_coords, 0);
     segments.push.apply(segments, get_hole_segments(bore_hole_arr, casing_arr, track_coords, 0));
+    return segments
+}
+
+function plot_segments(){
+    const segments = create_line_segments();
     for (var i = 0; i < segments.length; i++){
         let segment = segments[i]
         add_lines(segment.line_data, segment.class, segment.id)
