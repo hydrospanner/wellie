@@ -4,11 +4,21 @@
 Wellie - diagram
 {% endblock %}
 
-{% block body %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'wells/content/diagram.css' %}" />
 
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'wells/content/diagram.css' %}" />
+{% endblock %}
+
+{% block body %}
 <h3>{{ well }}</h3>
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
 
 <script type="text/javascript">
     const track_coords = {{ track_coords | safe }}
@@ -18,5 +28,4 @@ Wellie - diagram
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script src="{% static 'wells/scripts/diagram.js' %}"></script>
-
 {% endblock %}
