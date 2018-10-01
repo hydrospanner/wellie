@@ -229,7 +229,6 @@ let base_line_width = 20;
 let line_width = base_line_width;
 
 function define_csg_segments(casing_arr, track_coords, track_id){
-    
     const tubing_ct = 1
     // inner width is each tubing and the space around it
     const tubing_width = tubing_ct * line_width
@@ -261,7 +260,6 @@ function define_csg_segments(casing_arr, track_coords, track_id){
     
 function get_hole_segments(bore_hole_arr, casing_arr, track_coords, track_id){
     // assumes bore_hole_arr is in order from shallow to deep
-    // const line_width = 15
     const tubing_ct = 1
     // inner width is each tubing and the space around it
     const tubing_width = tubing_ct * line_width
